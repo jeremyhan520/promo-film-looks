@@ -1,4 +1,4 @@
-# 磨砂版 (glass): full spec
+# 苹果风格 (glass): full spec
 
 Apple-style frosted glass in the brand's blue, white and a little yellow. The film should feel calm, bright, precise and international. Select it with `--props=glass.json`; it is also the default when no props are passed. In code, `GL` is true.
 

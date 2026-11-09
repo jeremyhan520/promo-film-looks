@@ -138,7 +138,7 @@ To splice instead, overlay the segment on the old master's video with `overlay=e
 
 | Deliverable | Naming |
 |---|---|
-| Full film | `<机构>宣传片_<版本>_无字幕无BGM_1080p25.mp4`, e.g. `…_磨砂版v3_无字幕无BGM_1080p25.mp4` |
+| Full film | `<机构>宣传片_<版本>_无字幕无BGM_1080p25.mp4`, e.g. `…_苹果风格v3_无字幕无BGM_1080p25.mp4` |
 | Segments | Folder `<版本>_替换片段/`, files `<版本>_片段N_<内容>_TC-hh.mm.ss.ff.mp4` (start timecode) |
 
 Keep earlier versions next to the new one unless told otherwise. Record each edition and client round in the project's `DESIGN.md`.

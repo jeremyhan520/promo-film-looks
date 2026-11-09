@@ -10,7 +10,7 @@ export {FPS};
 export const DURATION_F = Math.round(DURATION_S * FPS);
 
 const THEME = (getInputProps() as {theme?: string}).theme ?? 'glass';
-/** 磨砂版: Apple-style frosted glass, blue / white / a little yellow. Otherwise 华章版 (Aurum Nocturne, midnight + gold). */
+/** 苹果风格: Apple-style frosted glass, blue / white / a little yellow. Otherwise 华章版 (Aurum Nocturne, midnight + gold). */
 export const GL = THEME !== 'aurum' && THEME !== 'lux';
 
 // Aurum Nocturne: midnight lacquer, champagne type, gold-leaf fills, smoked-glass cards.

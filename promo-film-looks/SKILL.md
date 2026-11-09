@@ -1,20 +1,20 @@
 ---
 name: promo-film-looks
-description: Two ready-made visual style templates for Remotion promo films (宣传片 / 形象片 / VCR), aimed at schools, colleges and institutions. 磨砂版 is Apple-style frosted glass in blue, white and a little yellow, with 优设标题黑 titles. 华章版 (Aurum Nocturne) is midnight lacquer with gold leaf. Includes a working engine template (scene kit, per-shot looks, transitions, photo frames, near-full-screen card rail, headline-number emphasis, text-as-mask opener), render, QA, master and replacement-segment scripts, and design principles. Use it whenever someone wants a promo film for a school, college, institute or company made in Remotion. Also use it for requests that mention 磨砂版, 华章版, 磨砂风, 毛玻璃, 黑金, 苹果风, frosted glass or a dark-gold luxury look, for a new edition or restyle of an existing promo, and for replacement segments of one, even if the skill is not named.
+description: Two ready-made visual style templates for Remotion promo films (宣传片 / 形象片 / VCR), aimed at schools, colleges and institutions. 苹果风格 is Apple-style frosted glass in blue, white and a little yellow, with 优设标题黑 titles. 华章版 (Aurum Nocturne) is midnight lacquer with gold leaf. Includes a working engine template (scene kit, per-shot looks, transitions, photo frames, near-full-screen card rail, headline-number emphasis, text-as-mask opener), render, QA, master and replacement-segment scripts, and design principles. Use it whenever someone wants a promo film for a school, college, institute or company made in Remotion. Also use it for requests that mention 苹果风格 (formerly 磨砂版), 华章版, 磨砂风, 毛玻璃, 黑金, 苹果风, frosted glass or a dark-gold luxury look, for a new edition or restyle of an existing promo, and for replacement segments of one, even if the skill is not named.
 ---
 
-# Promo film looks: 磨砂版 and 华章版
+# Promo film looks: 苹果风格 and 华章版
 
 Two finished style templates for institutional promo films. Start from a working engine instead of a blank Remotion project.
 
-- **磨砂版 (glass)**: Apple-style frosted glass. Per-shot white / sky / blue grounds, yellow accents, 优设标题黑 titles, rounded frameless photos, and live data graphics behind the glass. Read `references/glass.md`.
+- **苹果风格 (glass)**: Apple-style frosted glass. Per-shot white / sky / blue grounds, yellow accents, 优设标题黑 titles, rounded frameless photos, and live data graphics behind the glass. Read `references/glass.md`.
 - **华章版 (aurum, Aurum Nocturne)**: midnight lacquer ground, champagne type and gold-leaf titles. It adds gold-rimmed photo frames, light leaks and a few lens flares. Read `references/aurum.md`.
 
 One codebase renders both. The look is an input prop (`--props=glass.json` or `--props=aurum.json`), so the same timeline and scenes can ship as two editions.
 
 ## Choosing the look
 
-The default is 磨砂版: bright, clean and international, and it suits admissions and recruitment films best. 华章版 is darker and more ceremonial. Offer it for anniversaries, galas, awards and premium brand films, or when the user asks for 华丽 / 黑金 / luxury. Show a few stills before rendering a whole film in it.
+The default is 苹果风格: bright, clean and international, and it suits admissions and recruitment films best. 华章版 is darker and more ceremonial. Offer it for anniversaries, galas, awards and premium brand films, or when the user asks for 华丽 / 黑金 / luxury. Show a few stills before rendering a whole film in it.
 
 If the brand palette is not blue, keep the glass engine and recolour the tokens (`glassVars` in `looks.tsx`, `GLASS` in `theme.ts`). Don't build a new look from scratch.
 
@@ -93,6 +93,6 @@ Report what you checked, with numbers: frame count, decode, duration, LUFS, peak
 
 ## References
 
-- `references/glass.md`: the full 磨砂版 spec. Covers tokens, per-shot looks, frosted surfaces, transitions, detail layers, signature moves and pitfalls.
+- `references/glass.md`: the full 苹果风格 spec. Covers tokens, per-shot looks, frosted surfaces, transitions, detail layers, signature moves and pitfalls.
 - `references/aurum.md`: the full 华章版 spec. Covers the stage layers, gold-leaf type, frames, light leaks, flares and contrast traps.
 - `references/pipeline.md`: VO timing, the SFX cue table, the QA checklist, mastering, verification, replacement segments, splicing and delivery naming.
