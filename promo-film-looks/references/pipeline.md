@@ -16,8 +16,10 @@
 Create the project, then install and typecheck it:
 
 ```bash
-python ~/.claude/skills/promo-film-looks/scripts/scaffold.py <dir>
+python <skill-dir>/scripts/scaffold.py <dir>
 ```
+
+`<skill-dir>` is wherever this skill is installed, for example `~/.claude/skills/promo-film-looks` (Claude Code) or `~/.agents/skills/promo-film-looks` (Codex).
 
 ```bash
 cd <dir> && npm install && npx tsc --noEmit -p .

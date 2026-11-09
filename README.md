@@ -1,6 +1,6 @@
 # promo-film-looks · 学校宣传片风格模板（苹果风格 / 华章版）
 
-给 [Claude Code](https://claude.com/claude-code) 用的一个 Skill：两套做好的宣传片视觉风格，基于 [Remotion](https://www.remotion.dev/)（用 React 写视频）。装好后对 Claude 说"用苹果风格给 XX 学院做一支宣传片"，它会从一个能直接渲染的工程模板起步，而不是从空白项目开始。
+给 AI 编程助手用的一个 Skill，支持 [Claude Code](https://claude.com/claude-code) 和 [OpenAI Codex](https://developers.openai.com/codex/skills)（遵循开放的 [Agent Skills](https://agentskills.io) 格式）：两套做好的宣传片视觉风格，基于 [Remotion](https://www.remotion.dev/)（用 React 写视频）。装好后对它说"用苹果风格给 XX 学院做一支宣传片"，它会从一个能直接渲染的工程模板起步，而不是从空白项目开始。
 
 适合学校、学院、研究所、机构的宣传片 / 形象片 / 招生片 / 典礼 VCR。
 
@@ -43,7 +43,7 @@
 
 ```
 promo-film-looks/              ← 这个文件夹就是 Skill，复制到 skills 目录即可
-├── SKILL.md                   ← Claude 读的入口：怎么选风格、工作流程、设计原则
+├── SKILL.md                   ← AI 读的入口：怎么选风格、工作流程、设计原则
 ├── references/
 │   ├── glass.md               ← 苹果风格完整规格
 │   ├── aurum.md               ← 华章版完整规格
@@ -68,7 +68,7 @@ promo-film-looks/              ← 这个文件夹就是 Skill，复制到 skill
 
 ## 环境要求
 
-- [Claude Code](https://claude.com/claude-code)
+- [Claude Code](https://claude.com/claude-code) 或 [OpenAI Codex](https://developers.openai.com/codex)
 - Node.js 18 以上
 - FFmpeg（含 ffprobe）
 - Python 3.8 以上
@@ -80,7 +80,14 @@ promo-film-looks/              ← 这个文件夹就是 Skill，复制到 skill
 git clone https://github.com/jeremyhan520/promo-film-looks.git
 ```
 
-把里面的 `promo-film-looks/` 文件夹复制到 Claude Code 的 skills 目录：
+把里面的 `promo-film-looks/` 文件夹复制到你所用工具的 skills 目录：
+
+| 工具 | 所有项目可用 | 只在某个项目里用 |
+|---|---|---|
+| Claude Code | `~/.claude/skills/` | `<项目>/.claude/skills/` |
+| Codex | `~/.agents/skills/` | `<项目>/.agents/skills/` |
+
+### Claude Code
 
 ```bash
 cp -r promo-film-looks/promo-film-looks ~/.claude/skills/
@@ -92,11 +99,24 @@ Windows PowerShell：
 Copy-Item -Recurse promo-film-looks\promo-film-looks "$env:USERPROFILE\.claude\skills\"
 ```
 
-只想在某个项目里用，就复制到那个项目的 `.claude/skills/` 下。
+### Codex
+
+```bash
+mkdir -p ~/.agents/skills && cp -r promo-film-looks/promo-film-looks ~/.agents/skills/
+```
+
+Windows PowerShell：
+
+```powershell
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.agents\skills" | Out-Null
+Copy-Item -Recurse promo-film-looks\promo-film-looks "$env:USERPROFILE\.agents\skills\"
+```
+
+Codex 会自动发现新装的 Skill，没出现就重启 Codex。一些旧教程写的是 `~/.codex/skills/`，以 [OpenAI 当前文档](https://developers.openai.com/codex/skills) 为准。
 
 ### 字体
 
-字体不随仓库分发。按 [assets/fonts/README.md](promo-film-looks/assets/fonts/README.md) 的清单，把字体文件按指定文件名放进 `~/.claude/skills/promo-film-looks/assets/fonts/`：
+字体不随仓库分发。按 [assets/fonts/README.md](promo-film-looks/assets/fonts/README.md) 的清单，把字体文件按指定文件名放进已安装 Skill 的 `assets/fonts/` 文件夹，例如 `~/.claude/skills/promo-film-looks/assets/fonts/` 或 `~/.agents/skills/promo-film-looks/assets/fonts/`：
 
 | 文件名 | 字体 | 用途 |
 |---|---|---|
@@ -109,21 +129,30 @@ Copy-Item -Recurse promo-film-looks\promo-film-looks "$env:USERPROFILE\.claude\s
 
 ## 快速开始
 
-### 让 Claude 来做
+### 让 AI 来做
 
-装好 Skill 后，直接在 Claude Code 里说，例如：
+装好 Skill 后，在 Claude Code 或 Codex 里直接说，例如：
 
 - "用苹果风格给 XX 大学数学学院做一支 3 分钟的招生宣传片，配音和照片在 D:\素材"
 - "这支片子再出一版华章版"
 - "第 1 分 20 秒到 1 分 35 秒的科研团队那段改一下，只渲染替换片段"
 - "先给我看几张华章版的静帧，再决定要不要整片渲染"
 
-Claude 会按 `SKILL.md` 的流程：按配音逐字对时 → 写镜头表 → 用组件搭场景 → 渲染静帧自查 → 出母版 → 报告校验数据。
+它会按 `SKILL.md` 的流程：按配音逐字对时 → 写镜头表 → 用组件搭场景 → 渲染静帧自查 → 出母版 → 报告校验数据。
+
+Claude Code 和 Codex 都会根据你说的内容自动选用这个 Skill。在 Codex 里也可以输入 `$promo-film-looks` 明确指定。
+
+### 在 Codex 里使用的注意事项
+
+- 作者主要在 Claude Code 里使用和测试这个 Skill，Codex 下还没有完整跑过一支片子，遇到问题欢迎提 Issue
+- 第一次 `npm install` 需要联网，渲染时会启动一个无头浏览器。在 Codex 默认的沙箱权限下，这些命令可能需要你批准，或者需要放宽权限
+- Windows 上脚本要用 Git Bash 运行。在 PowerShell 里请显式调用 Git Bash，例如 `& "C:\Program Files\Git\bin\bash.exe" -c "PROPS=glass.json bash qa.sh demo 30 150"`，因为直接输入 `bash` 可能启动的是 WSL
 
 ### 手动跑演示
 
 ```bash
-python ~/.claude/skills/promo-film-looks/scripts/scaffold.py my-film
+SKILL_DIR=~/.claude/skills/promo-film-looks     # Codex：~/.agents/skills/promo-film-looks
+python $SKILL_DIR/scripts/scaffold.py my-film
 cd my-film
 npm install
 npx tsc --noEmit -p .
@@ -155,14 +184,16 @@ npx remotion studio                                         # 浏览器里预览
 
 ## English
 
-**promo-film-looks** is a [Claude Code](https://claude.com/claude-code) skill with two finished visual styles for institutional promo films (schools, colleges, institutes), built on [Remotion](https://www.remotion.dev/).
+**promo-film-looks** is an [Agent Skills](https://agentskills.io) skill for [Claude Code](https://claude.com/claude-code) and [OpenAI Codex](https://developers.openai.com/codex/skills), with two finished visual styles for institutional promo films (schools, colleges, institutes), built on [Remotion](https://www.remotion.dev/).
 
 - **苹果风格 (glass)**: Apple-style frosted glass in blue, white and a little yellow. Per-shot grounds, live data graphics behind the glass, frameless rounded photos, card-style shot transitions.
 - **华章版 (aurum, Aurum Nocturne)**: midnight lacquer with champagne type and gold-leaf titles, gold-rimmed frames, light leaks and a few flares.
 
 One codebase renders both; the look is an input prop, so one timeline can ship as two editions. The skill includes a working template (scene kit, text-as-mask opener, near-full-screen card rail, headline-number emphasis, photo and certificate frames), render / QA / loudness-master / replacement-segment scripts, and the design principles behind the looks.
 
-**Install**: copy the `promo-film-looks/` folder into `~/.claude/skills/`. Fonts are not redistributed; see [assets/fonts/README.md](promo-film-looks/assets/fonts/README.md). Then ask Claude Code something like "make a 3-minute admissions film for our school in the frosted-glass look".
+**Install**: copy the `promo-film-looks/` folder into `~/.claude/skills/` for Claude Code, or `~/.agents/skills/` for Codex (use `.claude/skills/` or `.agents/skills/` inside a project to scope it to that project). Fonts are not redistributed; see [assets/fonts/README.md](promo-film-looks/assets/fonts/README.md). Then ask something like "make a 3-minute admissions film for our school in the frosted-glass look". In Codex you can also name the skill with `$promo-film-looks`.
+
+**Codex notes**: the skill was built and tested in Claude Code and has not yet been run end to end in Codex; issues are welcome. `npm install` needs network access and rendering starts a headless browser, so Codex's default sandbox may ask you to approve these commands. On Windows, run the bash scripts through Git Bash, not a bare `bash` in PowerShell, which may start WSL.
 
 **Requirements**: Node.js 18+, FFmpeg, Python 3.8+, and Git Bash on Windows.
 

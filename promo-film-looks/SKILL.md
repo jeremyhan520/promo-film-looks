@@ -34,9 +34,10 @@ PROPS=glass.json bash qa.sh demo 30 150 268 320 460 520
 
 The demo timeline (`src/scenes/Demo.tsx`) has one shot per signature component. Render its stills in both looks before changing anything, to confirm fonts and the browser work on this machine.
 
-Two setup notes:
+Setup notes:
 - **Fonts** are not redistributed with the skill. `assets/fonts/README.md` lists each file, its source and its licence. The scaffold copies whatever is in `assets/fonts/`; missing fonts fall back without breaking the render.
 - **Browser**: `remotion.config.ts` points at local Edge when it exists, because Chrome Headless Shell may not download on some networks.
+- **Shell**: the scripts are bash, and `PROPS=… bash qa.sh` is bash syntax. On Windows run them in Git Bash. From PowerShell, call Git Bash explicitly, for example `& "C:\Program Files\Git\bin\bash.exe" -c "PROPS=glass.json bash qa.sh demo 30 150"`, because a bare `bash` there may start WSL instead.
 
 What the template contains:
 
