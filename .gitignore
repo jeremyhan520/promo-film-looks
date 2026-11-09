@@ -1,0 +1,11 @@
+node_modules/
+out/
+*.log
+.DS_Store
+Thumbs.db
+
+# fonts are not redistributed (see promo-film-looks/assets/fonts/README.md)
+promo-film-looks/assets/fonts/*.ttf
+promo-film-looks/assets/fonts/*.otf
+promo-film-looks/assets/fonts/*.woff
+promo-film-looks/assets/fonts/*.woff2
